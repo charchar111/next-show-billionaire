@@ -1,17 +1,18 @@
 import { api } from "@/apis/Billions";
 import Pagination from "@/components/Paginations";
 import { PAGE_DISPLAY } from "@/constants/api";
+import { pageAtom } from "@/utils/atoms";
 import { IbillionaireIndex, Ipage } from "@/utils/interface";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 export default function Index() {
+  const setPageState = useSetRecoilState(pageAtom);
+
   const [billionaire, setBillionaire] = useState<
     undefined | IbillionaireIndex[]
   >();
-  const [page, setPage] = useState<Ipage>({ total: undefined, current: 0 });
-  function x() {
-    return 1;
-  }
 
   useEffect(() => {
     (async function getBillionaireIndex() {
@@ -22,7 +23,7 @@ export default function Index() {
 
   useEffect(() => {
     if (billionaire) {
-      setPage((current) => {
+      setPageState((current) => {
         const returnTarget = { ...current };
         returnTarget.total = Math.ceil(billionaire.length / PAGE_DISPLAY);
         return returnTarget;
@@ -35,8 +36,7 @@ export default function Index() {
   return (
     <div id="index" className="">
       <main>
-        <Pagination page={page} />
-        dsda
+        <Pagination />
       </main>
     </div>
   );

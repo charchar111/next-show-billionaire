@@ -12,16 +12,33 @@
 
 ## 구현 기능
 
-### index page
+### global
+
+- recoil 세팅 ✅
+- theme 세팅 ✅
+  - jsx로 theme 객체를 \_app에 세팅
+  - tailwindCSS가 오버라이드 가능
+
+### page
+
+#### index
 
 - 억만장자 목록을 썸네일 형태로 보여준다.
-- pagination
 
   - 한 페이지는 30개까지 리스트를 보여준다.
 
 - sort
   - 이름 순, 재산 순, 나이 순 나열 기능을 지원한다.
 
+### component
+
+#### pagination
+
+- 링크를 누르면 querystring 변환 ✅
+- querystring에 따라 위치를 표시하도록 ui 표시 ✅
+
 ## 예외 상황 테스트
+
+- page query에다가 순수 숫자가 아닌 문자를 넣는 경우
 
 ## 디자인 구조
