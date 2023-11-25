@@ -5,4 +5,11 @@ export const api = {
     ).json();
     return data;
   },
+
+  billionaireDetail: async function (id: string) {
+    const data = await (
+      await fetch(`https://billions-api.nomadcoders.workers.dev/person/${id}`)
+    ).json();
+    return data;
+  },
 };

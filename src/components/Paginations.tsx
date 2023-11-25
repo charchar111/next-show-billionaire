@@ -61,9 +61,11 @@ export default function Pagination() {
         })}
         <Link
           href={`/?page=${
-            Number(currentPage)
-              ? Math.ceil(Number(currentPage) / 10) * 10 + 1
-              : 11
+            !Number(currentPage)
+              ? 11
+              : Math.ceil(Number(currentPage) / 10) * 10 + 1 > pageTotal.length
+                ? pageTotal.length
+                : Math.ceil(Number(currentPage) / 10) * 10 + 1
           }`}
           className="page-btn--next"
         >

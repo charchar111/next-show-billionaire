@@ -54,35 +54,34 @@ export default function Index() {
           className="grid grid-cols-1 gap-24 sm:grid-cols-2 lg:grid-cols-3 "
         >
           {cutBillionaire?.map((element, index) => (
-            <div
-              key={index}
-              className="flex cursor-pointer flex-col items-center opacity-70 transition-all hover:opacity-100"
-            >
-              <div className="h-full">
-                {!element.squareImage ||
-                element.squareImage === "https:undefined" ? (
-                  <p className="py-24 opacity-50">No Image</p>
-                ) : (
-                  <img
-                    className="rounded-3xl"
-                    src={element.squareImage}
-                    alt={`${element.name}`}
-                  />
-                )}
+            <Link href={`/detail/${element.id}`} key={index}>
+              <div className="flex cursor-pointer flex-col items-center opacity-70 transition-all hover:opacity-100">
+                <div className="h-full">
+                  {!element.squareImage ||
+                  element.squareImage === "https:undefined" ? (
+                    <p className="py-24 opacity-50">No Image</p>
+                  ) : (
+                    <img
+                      className="rounded-3xl"
+                      src={element.squareImage}
+                      alt={`${element.name}`}
+                    />
+                  )}
+                </div>
+                <h5 className="py-4 text-xl font-semibold">{element.name}</h5>
+                <p className="mb-2">{element.netWorth.toLocaleString()}</p>
+                <div className="h-max space-x-10">
+                  {element.industries.map((e, i) => (
+                    <span
+                      className="inline-block rounded-md bg-gray-500 px-3 py-1"
+                      key={i}
+                    >
+                      {e}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <h5 className="py-4 text-xl font-semibold">{element.name}</h5>
-              <p className="mb-2">{element.netWorth.toLocaleString()}</p>
-              <div className="h-max space-x-10">
-                {element.industries.map((e, i) => (
-                  <span
-                    className="inline-block rounded-md bg-gray-500 px-3 py-1"
-                    key={i}
-                  >
-                    {e}
-                  </span>
-                ))}
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
 

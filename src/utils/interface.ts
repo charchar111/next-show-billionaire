@@ -6,6 +6,32 @@ export interface IbillionaireIndex {
   industries: string[];
 }
 
+export interface IbillionaireDetail {
+  id: string;
+  city: string;
+  name: string;
+  country: string;
+  position: number;
+  industries: string[];
+  thumbnail: string;
+  squareImage: string;
+  bio: string[];
+  about: string[];
+  netWorth: number;
+  financialAssets: IfinancialAssets[];
+}
+
+export interface IfinancialAssets {
+  exchange: string;
+  ticker: string;
+  companyName: string;
+  numberOfShares: number;
+  sharePrice: number;
+  currencyCode: string;
+  exchangeRate: number;
+  interactive: boolean;
+}
+
 export interface Ipage {
   total: undefined | number;
 }

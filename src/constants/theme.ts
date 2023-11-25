@@ -5,7 +5,7 @@ export const theme: { dark: ITheme } = {
     mode: "dark",
     bgcolors: {
       background: "rgb(34,35,42)",
-      surface1: "rgb(52,53,60)",
+      surface1: "rgb(46,47,54)",
       surface2: "rgb(50,50,50)",
       surface3: "rgb(75,75,75)",
       primary: "rgba(187,134,252,0.5)",

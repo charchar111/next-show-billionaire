@@ -16,8 +16,11 @@
 
 - recoil 세팅 ✅
 - theme 세팅 ✅
+
   - jsx로 theme 객체를 \_app에 세팅
   - tailwindCSS가 오버라이드 가능
+
+  - 반응형 디자인 ✅
 
 ### page
 
@@ -29,6 +32,10 @@
 
 - sort
   - 이름 순, 재산 순, 나이 순 나열 기능을 지원한다.
+
+#### detail/\[id\]
+
+- 억만장자의 상세정보를 보여준다 ✅
 
 ### component
 
@@ -43,5 +50,6 @@
 
 - 사진이 없을 때 no image 출력 ✅
 - page query에다가 순수 숫자가 아닌 문자를 넣는 경우 404 페이지로 리다이렉트 ✅
+- api의 특정 프로퍼티가 없을 때를 대비하여 optional chaining ⏸
 
 ## 디자인 구조
