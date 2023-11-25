@@ -37,7 +37,6 @@ export default function Index() {
     }
   }, [billionaire]);
 
-  console.log(billionaire);
   const cutBillionaire = billionaire?.slice(
     isNaN(currentPage)
       ? (DEFAULT_INDEX - 1) * PAGE_DISPLAY
@@ -59,12 +58,17 @@ export default function Index() {
               key={index}
               className="flex cursor-pointer flex-col items-center opacity-70 transition-all hover:opacity-100"
             >
-              <div className="">
-                <img
-                  className="rounded-3xl"
-                  src={element.squareImage}
-                  alt={`${element.name}`}
-                />{" "}
+              <div className="h-full">
+                {!element.squareImage ||
+                element.squareImage === "https:undefined" ? (
+                  <p className="py-24 opacity-50">No Image</p>
+                ) : (
+                  <img
+                    className="rounded-3xl"
+                    src={element.squareImage}
+                    alt={`${element.name}`}
+                  />
+                )}
               </div>
               <h5 className="py-4 text-xl font-semibold">{element.name}</h5>
               <p className="mb-2">{element.netWorth.toLocaleString()}</p>

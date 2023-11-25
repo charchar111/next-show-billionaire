@@ -13,17 +13,28 @@ export default function Pagination() {
   const currentPage =
     typeof router.query?.page === "string" ? router.query?.page : undefined;
 
+  console.log(currentPage);
+
   const pageState = useRecoilValue(pageAtom);
   const pageTotal = Array.from(Array(pageState.total));
 
   return (
     <section id="pagination">
-      <div className="pagination-layout flex justify-center space-x-3 text-center text-lg ">
-        <Link href="/" className="page-btn--prev">
+      <div className="pagination-layout my-10 flex flex-wrap justify-center space-x-3 text-center text-lg  ">
+        <Link
+          href={`/?page=${
+            currentPage === undefined
+              ? 1
+              : Number(currentPage) >= 1 && Number(currentPage) <= 10
+                ? 1
+                : Math.floor(Number(currentPage) / 10) * 10 - 9
+          }`}
+          className="page-btn--prev"
+        >
           <i className="fa-solid fa-angle-left"></i>
         </Link>
-        {pageTotal.map((e, i) =>
-          i < 10 ? (
+        {pageTotal.map((e, i) => {
+          const ui = (
             <Link
               href={`/?page=${i + 1}`}
               className={`page-btn aspect-square w-8 ${
@@ -37,9 +48,25 @@ export default function Pagination() {
             >
               {i + 1}
             </Link>
-          ) : null,
-        )}
-        <Link href="/" className="page-btn--next">
+          );
+
+          if (!currentPage && i < 10) return ui;
+          if (
+            (Math.ceil(Number(currentPage) / 10) - 1) * 10 <= i &&
+            // i <= Math.ceil(Number(currentPage) / 10) + 8
+            i <= (Math.ceil(Number(currentPage) / 10) - 1) * 10 + 9
+          )
+            return ui;
+          return null;
+        })}
+        <Link
+          href={`/?page=${
+            Number(currentPage)
+              ? Math.ceil(Number(currentPage) / 10) * 10 + 1
+              : 11
+          }`}
+          className="page-btn--next"
+        >
           <i className="fa-solid fa-angle-right"></i>
         </Link>
       </div>
