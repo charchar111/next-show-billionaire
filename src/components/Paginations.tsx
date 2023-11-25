@@ -3,17 +3,17 @@ import { pageAtom } from "@/utils/atoms";
 import { Ipage } from "@/utils/interface";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 const dark = theme.dark;
 
 export default function Pagination() {
   const router = useRouter();
-  console.log(router);
+
   const currentPage =
     typeof router.query?.page === "string" ? router.query?.page : undefined;
 
-  const [pageState, setPageState] = useRecoilState(pageAtom);
+  const pageState = useRecoilValue(pageAtom);
   const pageTotal = Array.from(Array(pageState.total));
 
   return (
