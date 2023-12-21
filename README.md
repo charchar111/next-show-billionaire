@@ -3,6 +3,7 @@
 ## 컨셉
 
 이 사이트의 목적은 세계의 억만장자를 통람하고 상세정보를 제공하는 것입니다. 제작 동기는 노마드 코더의 캐럿마켓 클론 강의를 수강하면서 도전과제(챌린지)를 위해 만들었습니다.
+사이트 주소[https://codesandbox.io/p/github/charchar111/next-show-billionaire/main?workspaceId=253bbec8-14e6-427d-974c-b32294bcc2d8]
 
 ## 목차
 
